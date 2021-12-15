@@ -28,3 +28,20 @@ a {
     margin: 0 2em;
 }
 
+/* HOME */
+
+/* HOME - SEARCH BAR */
+
+.search-bar {
+    background-image: url("../images/travel-mate-logo-no-title.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-bar * {
+    margin: 10px;
+}
+
