@@ -1,0 +1,47 @@
+/* body */
+
+body {
+    margin: 20px;
+    background-color: #22577E;
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* NAV */
+
+.nav, .nav__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav, .nav__items a {
+    color: #FF914D;
+}
+.nav__items h1 {
+    margin-right: 2em;
+    font-family: 'lobster';
+}
+.nav__items a {
+    margin: 0 2em;
+}
+
+/* HOME */
+
+/* HOME - SEARCH BAR */
+
+.search-bar {
+    background-image: url("../images/travel-mate-logo-no-title.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search-bar * {
+    margin: 10px;
+}
+
