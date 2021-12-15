@@ -6,9 +6,9 @@
         <input type="text">
         <select name="pets" id="pet-select">
             <option value="">Please choose a city</option>
-            <option value="">Paris</option>
-            <option value="">Miami</option>
-            <option value="">Bangkok</option>
+            {% for country in countries %}
+                <option value="">{{country.name}}</option>
+            {% endfor %}
         </select>
         <select name="pets" id="pet-select">
             <option value="">Please choose a category</option>
