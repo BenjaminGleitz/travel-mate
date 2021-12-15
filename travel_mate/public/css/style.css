@@ -38,10 +38,34 @@ a {
     background-position: top;
     height: 500px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 }
 .search-bar * {
-    margin: 10px;
+    margin: 0 10px;
 }
+.search-bar label, legend {
+    display: none;
+}
+#form{
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+}
+.search-bar form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#form_name, #form_country, #form_city, #form_category {
+    width: 160px;
+}
+#form_date {
+    width: 340px;
+}
+.form__submit {
+    margin: 30px;
+    width: 70%;
+}
+
 

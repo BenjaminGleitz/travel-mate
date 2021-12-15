@@ -3,20 +3,11 @@
 {% block body %}
 
     <div class="search-bar">
-        <input type="text">
-        <select name="pets" id="pet-select">
-            <option value="">Please choose a city</option>
-            {% for country in countries %}
-                <option value="">{{country.name}}</option>
-            {% endfor %}
-        </select>
-        <select name="pets" id="pet-select">
-            <option value="">Please choose a category</option>
-            <option value="">Nature</option>
-            <option value="">Sport</option>
-            <option value="">Party</option>
-        </select>
-        <input type="date">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_widget(form) }}
+
+            <button type='submit' formnovalidate class="btn btn-light form__submit">Rechercher</button>
+        {{ form_end(form) }}
     </div>
 
 {% endblock %}

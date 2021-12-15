@@ -7,6 +7,7 @@ use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CountryRepository::class)
@@ -22,6 +23,7 @@ class Country
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Please enter an event category")
      */
     private $name;
 
@@ -116,7 +118,7 @@ class Country
     {
         if (!$this->cities->contains($city)) {
             $this->cities[] = $city;
-            $city->setCountryId($this);
+            $city->setCountry($this);
         }
 
         return $this;
@@ -126,11 +128,16 @@ class Country
     {
         if ($this->cities->removeElement($city)) {
             // set the owning side to null (unless already changed)
-            if ($city->getCountryId() === $this) {
-                $city->setCountryId(null);
+            if ($city->getCountry() === $this) {
+                $city->setCountry(null);
             }
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 }
