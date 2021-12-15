@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CountryRepository;
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,9 +40,15 @@ class Country
      */
     private $country_code;
 
+    /**
+     * @ORM\OneToMany(targetEntity=City::class, mappedBy="CountryId", orphanRemoval=true)
+     */
+    private $cities;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
+        $this->cities = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +100,36 @@ class Country
     public function setCountryCode(?string $country_code): self
     {
         $this->country_code = $country_code;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|City[]
+     */
+    public function getCities(): Collection
+    {
+        return $this->cities;
+    }
+
+    public function addCity(City $city): self
+    {
+        if (!$this->cities->contains($city)) {
+            $this->cities[] = $city;
+            $city->setCountryId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCity(City $city): self
+    {
+        if ($this->cities->removeElement($city)) {
+            // set the owning side to null (unless already changed)
+            if ($city->getCountryId() === $this) {
+                $city->setCountryId(null);
+            }
+        }
 
         return $this;
     }
