@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CategoryController!{% endblock %}
+
+
+
+{% block body %}
+
+{% include "partials/_category-nav.html.twig" %}
+
+    <div class="event__container">
+        <h1 class="event__category">{{categoryById.name}}</h1>
+        <div class="event__list">
+            {% for event in categoryById.events %}
+                <a href="{{ path("event_show", {id:event.id}) }}">
+                    <div class="event__card">
+                        <h5 class="event__title">{{ event.name }}</h5>
+                        <img class="event__image" src="{{ event.category.image }}" alt="">
+                    </div>
+                </a>
+                <a href="{{ path("event_show", {id:event.id}) }}">
+                    <div class="event__card">
+                        <h5 class="event__title">{{ event.name }}</h5>
+                        <img class="event__image" src="{{ event.category.image }}" alt="">
+                    </div>
+                </a>
+                <a href="{{ path("event_show", {id:event.id}) }}">
+                    <div class="event__card">
+                        <h5 class="event__title">{{ event.name }}</h5>
+                        <img class="event__image" src="{{ event.category.image }}" alt="">
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+        
+
+{% endblock %}

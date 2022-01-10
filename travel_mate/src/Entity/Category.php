@@ -2,16 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CityRepository;
-use DateTimeImmutable;
+use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CityRepository::class)
+ * @ORM\Entity(repositoryClass=CategoryRepository::class)
  */
-class City
+class Category
 {
     /**
      * @ORM\Id
@@ -19,12 +18,6 @@ class City
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Country::class, inversedBy="cities")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $Country;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -42,37 +35,23 @@ class City
     private $updatedAt;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $countryCode;
+    private $image;
 
     /**
-     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="city")
+     * @ORM\OneToMany(targetEntity=Event::class, mappedBy="category")
      */
     private $events;
 
     public function __construct()
     {
-        // $this->event = new ArrayCollection();
-        $this->createdAt = new DateTimeImmutable();
         $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getCountry(): ?Country
-    {
-        return $this->Country;
-    }
-
-    public function setCountry(?Country $Country): self
-    {
-        $this->Country = $Country;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -111,21 +90,16 @@ class City
         return $this;
     }
 
-    public function getCountryCode(): ?string
+    public function getImage(): ?string
     {
-        return $this->countryCode;
+        return $this->image;
     }
 
-    public function setCountryCode(?string $countryCode): self
+    public function setImage(?string $image): self
     {
-        $this->countryCode = $countryCode;
+        $this->image = $image;
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->getName();
     }
 
     /**
@@ -140,7 +114,7 @@ class City
     {
         if (!$this->events->contains($event)) {
             $this->events[] = $event;
-            $event->setCity($this);
+            $event->setCategory($this);
         }
 
         return $this;
@@ -150,8 +124,8 @@ class City
     {
         if ($this->events->removeElement($event)) {
             // set the owning side to null (unless already changed)
-            if ($event->getCity() === $this) {
-                $event->setCity(null);
+            if ($event->getCategory() === $this) {
+                $event->setCategory(null);
             }
         }
 

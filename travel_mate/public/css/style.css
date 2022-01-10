@@ -1,18 +1,32 @@
 /* body */
 
 body {
-    margin: 20px;
+    margin: 0 20px;
     background-color: #22577E;
     color: white;
 }
 a {
     text-decoration: none;
     color: white;
+    font-size: 20px;
 }
-
+.content {
+    padding-top: 90px;
+}
 /* NAV */
 
-.nav, .nav__items {
+.nav {
+    position: fixed;
+    left: 0;
+    padding: 0 30px;
+    width: 100%;
+    height: 80px;
+    transition: 0.5s;
+}
+.sticky {
+    background: #1F3849;
+}
+.nav, .nav__items, .category-nav__items {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,6 +40,20 @@ a {
 }
 .nav__items a {
     margin: 0 2em;
+}
+
+/* NAV - CATEGORY NAV */
+.category-nav__items {
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.category-nav {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    height: 90vh;
+    border-right: solid white 2px;
 }
 
 /* HOME */
@@ -67,5 +95,138 @@ a {
     margin: 30px;
     width: 70%;
 }
+
+/* CATEGORY PAGE */
+
+.event__list, .event__category {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-left: 200px;
+}
+
+hr {
+    margin: 50px 0;
+}
+.event__card {
+    background: #FF5959;
+    border-radius: 10%;
+    height: 300px;
+    width: 400px;
+    margin: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.event__image {
+    width: 100%;
+    height: 80%;
+    border-radius: 0 0 10% 10%;
+}
+.event__title {
+    margin-top: 15px;
+}
+
+/* EVENT SHOW */
+
+.event__position {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+.background {
+    width: 100%;
+    height: 80%;
+    background: #1F3849;
+    border-radius: 0 0 30px 30px;
+}
+.event__background {
+    width: 60%;
+    height: 70vh;
+    border-radius: 30px;
+    background-size: cover;
+}
+.event__background--Culture {
+    background-image: url(../images/culture.jpeg);
+}
+.event__background--Restaurant {
+    background-image: url("../images/culture.jpeg");
+}
+.event__background--Sport {
+    background-image: url("../images/sport.jpg");
+}
+.event__background--Party {
+    background-image: url("../images/party.jpeg");
+}
+.event__background--Date {
+    background-image: url("../images/party.jpeg");
+}
+.event__background--Mutual {
+    background-image: url("../images/mutual-help.jpg");
+}
+.event__background--Nature {
+    background-image: url("../images/party.jpg");
+}
+.event-detail__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.event-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+.event-title h1 {
+    font-weight: bold;
+    color: #1F3849;
+}  
+.event-info__container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+}
+.event-info__description {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    text-align: center;
+}
+.event-info__location {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.event-info__location ul {
+    list-style-type: none;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+li i {
+    margin-right: 20px;
+}
+.particpate-button {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.particpate-button button {
+    width: 50%;
+    border-radius: 30px;
+    background: #F67280;
+}
+
+
+
+
 
 
