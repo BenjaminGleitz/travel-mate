@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Country;
 use App\Entity\City;
 use App\Repository\CityRepository;
 use App\Repository\CountryRepository;
+use App\Repository\EventRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -26,38 +28,22 @@ class HomeController extends AbstractController
      * @Route(name="index")
      * @return Response
      */
-    public function index(CountryRepository $countryRepository, Request $request): Response
+    public function index(CountryRepository $countryRepository,EventRepository $eventRepository, Request $request): Response
     {
 
         $countries = $countryRepository->findAll();
 
         $form = $this->createFormBuilder()
-            ->add('name', TextType::class, [
+            ->add('city', TextType::class, [
+                'constraints' => new NotBlank(['message' => 'Please write a city']),
                 'attr' => [
-                    'placeholder'=>'Event\'s Name'
+                    'placeholder'=>'City (Ex : Salvador)',
+                    'class' => 'form-control__city'
                 ],
-                'constraints' => new NotBlank(['message' => 'nope'])
             ])
-            ->add('country', EntityType::class, [
-                'class' => Country::class,
-                'placeholder' => 'Country',
-                'query_builder' => function(CountryRepository $countryRepository) {
-                    return $countryRepository->createQueryBuilder('c')->orderBy('c.name', 'ASC');
-                }
-            ])
-            ->add('city', EntityType::class, [
-                'class' => City::class,
-                'disabled' => true,
-                'placeholder' => 'City',
-                'query_builder' => function(CityRepository $cityRepository) {
-                    return $cityRepository->createQueryBuilder('c')->orderBy('c.name', 'ASC');
-                }
-            ])
-            ->add('category', TextType::class, [
-                'attr' => [
-                    'placeholder'=>'Category'
-                ],
-                'constraints' => new NotBlank(['message' => 'nope'])
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'placeholder' => 'All categories'
             ])
             ->add('date', DateType::class, [
                 'placeholder' => [
@@ -69,7 +55,33 @@ class HomeController extends AbstractController
 
         $form->handleRequest($request);
 
+        // we get the search input content
+        $query = $form->get('city')->getData();
+
+        // we get the select content 
+        $category = $form->get('category')->getData();
+
+        // we get the select content 
+        $date = $form->get('date')->getData();
+        // dd($date);
+        
+
+        // if category is empty, we send a enpty string to the method
+        if (empty($category)) {
+            $category='';
+        }
+
+        // 2) we get all the matching results
+        $results = $eventRepository->searchEventByCity($query, $category, $date);
+        // dump($results);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            return $this->render('home/index.html.twig', [
+                'countries' => $countries,
+                'form' => $form->createView(),
+                'query' => $query,
+                'results' => $results
+            ]);
         }
 
         return $this->render('home/index.html.twig', [

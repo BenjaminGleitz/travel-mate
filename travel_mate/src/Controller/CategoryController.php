@@ -20,7 +20,7 @@ class CategoryController extends AbstractController
     {
         $categories = $categoryRepository->findAll();
 
-        $events = $eventRepository->findAll();
+        $events = $eventRepository->findBy(array(), array('id' => 'DESC'));
 
 
         return $this->render('category/index.html.twig', [

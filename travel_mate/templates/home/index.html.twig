@@ -2,12 +2,38 @@
 
 {% block body %}
 
-    <div class="search-bar">
-        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-            {{ form_widget(form) }}
+    
 
-            <button type='submit' formnovalidate class="btn btn-light form__submit">Rechercher</button>
-        {{ form_end(form) }}
-    </div>
+    <section id="search">
+        <div class="search-bar">
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate','action': '#results'}}) }}
+                {{ form_widget(form) }}
+                <button type='submit' formnovalidate class="btn btn-light form__submit">rechercher</button></a>
+            {{ form_end(form) }}
+        </div>
+    </section>
+
+    <section id="results">
+    {% if results is defined %}
+        <div class="button-group">
+            <h1 class='result'>"{{query}}"</h1>
+            <button type="button" class="btn btn-secondary"><a href="#content">nouvelle recherche</a></button>
+        </div>
+        
+        <hr>
+        <div class="event__list">
+            {% for event in results %}
+                <a href="{{ path("event_show", {id:event.id}) }}">
+                    <div class="event__card">
+                        <h5 class="event__title">{{ event.name }}</h5>
+                        <img class="event__image" src="{{ event.category.image }}" alt="">
+                        <div class="event__city">{{ event.city }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    
+    </section>
 
 {% endblock %}

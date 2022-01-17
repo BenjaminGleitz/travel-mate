@@ -1,0 +1,15 @@
+
+
+
+    <nav class="search-nav">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_row(form.name, {'label': 'foo'}) }}
+            {{ form_row(form.category, {'label': 'foo'}) }}
+            {{ form_row(form.country, {'label': 'foo'}) }}
+            {{ form_row(form.city, {'label': 'foo'}) }}
+            {{ form_row(form.date, {'label': 'foo'}) }}
+            
+
+            <button type='submit' formnovalidate class="btn btn-light form__submit">Rechercher</button>
+        {{ form_end(form) }}
+    </nav>

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% include "partials/_search-nav.html.twig" %}
+
+{% for event in results %}
+    <h1>{{ event.name }}</h1>
+{% endfor %}
+
+{% endblock %}
+
