@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+    <div class="event__position">
+        <div class="event-detail__container event__background event__background--{{event.category.name}}">
+            <div class="event-title">
+                <h1>{{event.name}}</h1>
+            </div>
+            <div class="background">
+                <div class="event-info__container">
+                    <div class="event-info__description">
+                        <p>{{event.description}}</p>
+                    </div>
+                    <div class="event-info__location">
+                        <ul>
+                            <li> {{event.category.name}}</li>
+                            <li><i class="fas fa-map-marker-alt"></i> {{event.city.name}}, {{event.city.country.name}} </li>
+                            <li><i class="fas fa-calendar-alt"></i> The {{ event.startAt | date('jS F Y, h A') }}</li>
+                            <li><i class="fas fa-user"></i> Benjamin Gleitz</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="particpate-button">
+                    <button> Participate !</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

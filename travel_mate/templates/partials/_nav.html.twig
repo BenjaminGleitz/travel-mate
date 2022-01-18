@@ -2,13 +2,13 @@
     <nav class="nav">
         <div class="nav__items">
             <h1>Travel Mate</h1>
-            <a href="">home</a>
+            <a href="{{ path('home_index') }}">home</a>
             <a href="">destination</a>
-            <a href="">categories</a>
+            <a href="{{ path('category_index') }}">categories</a>
         </div>
         <div class="nav__account">
             <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn btn-secondary dropdown-toggle account-button" data-bs-toggle="dropdown" aria-expanded="false">
                 Account
             </button>
             <ul class="dropdown-menu dropdown-menu-end">
@@ -19,4 +19,12 @@
             </div>
         </div>
     </nav>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function() {
+            var header = document.querySelector(".nav");
+            header.classList.toggle("sticky", window.scrollY > 0)
+        })
+    </script>
 </header>
+<section id="content">
