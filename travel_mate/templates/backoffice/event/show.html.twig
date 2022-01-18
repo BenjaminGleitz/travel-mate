@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Event{% endblock %}
+
+{% block body %}
+    <div class="table__container">
+        <h1>Event</h1>
+
+        <table class="table table--show">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ event.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ event.name }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ event.description }}</td>
+                </tr>
+                <tr>
+                    <th>StartAt</th>
+                    <td>{{ event.startAt ? event.startAt|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>CreatedAt</th>
+                    <td>{{ event.createdAt ? event.createdAt|date('Y-m-d') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>UpdatedAt</th>
+                    <td>{{ event.updatedAt ? event.updatedAt|date('Y-m-d') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="table__button-group">
+            <div class="table__edit-group">
+                <a class="table__button" href="{{ path('backoffice_event_index') }}">back to list</a>
+
+                <a class="table__button" href="{{ path('backoffice_event_edit', {'id': event.id}) }}">edit</a>
+            </div>
+            {{ include('backoffice/event/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

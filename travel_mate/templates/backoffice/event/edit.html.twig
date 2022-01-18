@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Event{% endblock %}
+
+{% block body %}
+    <div class="table__container">
+        <div class="form__container">
+            <h1>Edit Event</h1>
+            <div class="table__button-group">
+                <a class="table__button" href="{{ path('backoffice_event_index') }}">back to list</a>
+
+                {{ include('backoffice/event/_delete_form.html.twig') }}
+            </div>
+
+            {{ include('backoffice/event/_form.html.twig', {'button_label': 'Update'}) }}
+        </div>
+    </div>
+    
+{% endblock %}

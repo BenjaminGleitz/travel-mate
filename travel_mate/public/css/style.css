@@ -10,6 +10,10 @@ a {
     color: white;
     font-size: 20px;
 }
+a:hover {
+    text-decoration: none;
+    color: white;
+}
 #content {
     padding-top: 90px;
 }
@@ -19,6 +23,7 @@ a {
 /* NAV */
 
 .nav {
+    font-weight: bold;
     z-index: 1;
     position: fixed;
     left: 0;
@@ -268,7 +273,114 @@ li i {
     margin: 20px;
 }
 
+/*! BACKOFFICE */
 
+/* TABLE */
+
+.table__container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin: 20px;
+    min-height: 80vh;
+}
+.table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 400px;
+    background-color: #1868a1;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgb(255, 89, 89, 0.2);
+}
+.table thead tr, th {
+    background-color: rgb(255, 89, 89);
+    font-weight: bold;
+}
+.table thead td {
+    padding: 12px 15px;
+}
+.table tbody tr {
+    border-bottom: 1px solid #fff;
+}
+.table tbody tr:nth-of-type(even) {
+    background-color: #227ab9;
+}
+.table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(255, 89, 89);
+}
+.table--show {
+    text-align: center;
+}
+.table--show tbody tr:last-of-type {
+    border-bottom:none;
+}
+a.table__button{
+    text-align: center;
+    font-weight: bold;
+    width: 210px;
+    border-radius: 5px;
+    padding: 10px 30px;
+    background-color: #227ab9;
+    color: white;
+    margin-right: 20px;
+    transition: 0.5s;
+}
+a.table__button:hover {
+    background-color: white;
+    color: #227ab9;
+}
+td:last-child {
+    text-align: center;
+}
+a.action-button {
+    background-color: white;
+    color: #227ab9;
+    text-align: center;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.table__button-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.delete-button {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    width: 210px;
+    border-radius: 5px;
+    padding: 10px 30px;
+    background-color: #227ab9;
+    color: white;
+}
+.update-button {
+    text-align: center;
+    font-size: larger;
+    width: 100%;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px 30px;
+    background-color: #227ab9;
+    color: white;
+}.update-button:hover {
+    background-color: #5eb922;
+    color: white;
+}
+.delete-button--delete:hover {
+    background-color: rgb(255, 89, 89);
+    color: white;
+}
+
+/* FORM */
+
+.form__container {
+    margin: 0 auto;
+     width: 50%; 
+}
 
 
 
