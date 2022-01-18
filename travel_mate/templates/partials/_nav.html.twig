@@ -1,0 +1,30 @@
+<header>
+    <nav class="nav">
+        <div class="nav__items">
+            <h1>Travel Mate</h1>
+            <a href="{{ path('home_index') }}">home</a>
+            <a href="">destination</a>
+            <a href="{{ path('category_index') }}">categories</a>
+        </div>
+        <div class="nav__account">
+            <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle account-button" data-bs-toggle="dropdown" aria-expanded="false">
+                Account
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><button class="dropdown-item" type="button">Action</button></li>
+                <li><button class="dropdown-item" type="button">Another action</button></li>
+                <li><button class="dropdown-item" type="button">Something else here</button></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+
+    <script type="text/javascript">
+        window.addEventListener("scroll", function() {
+            var header = document.querySelector(".nav");
+            header.classList.toggle("sticky", window.scrollY > 0)
+        })
+    </script>
+</header>
+<section id="content">

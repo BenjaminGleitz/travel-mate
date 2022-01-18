@@ -1,0 +1,11 @@
+
+
+
+    <nav class="category-nav">
+        <div class="category-nav__items">
+            <a href="{{ path("category_index") }}">Derniers ajouts</a>
+            {% for category in categories %}
+                <a href="{{ path("category_show", {id:category.id}) }}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </nav>
