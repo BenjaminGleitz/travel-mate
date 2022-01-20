@@ -30,6 +30,27 @@
                         <div class="event__city">{{ event.city }}</div>
                     </div>
                 </a>
+                <a href="{{ path("event_show", {id:event.id}) }}">
+                    <div class="event__card">
+                        <h5 class="event__title">{{ event.name }}</h5>
+                        <img class="event__image" src="{{ event.category.image }}" alt="">
+                        <div class="event__city">{{ event.city }}</div>
+                    </div>
+                </a>
+                <a href="{{ path("event_show", {id:event.id}) }}">
+                    <div class="event__card">
+                        <h5 class="event__title">{{ event.name }}</h5>
+                        <img class="event__image" src="{{ event.category.image }}" alt="">
+                        <div class="event__city">{{ event.city }}</div>
+                    </div>
+                </a>
+                <a href="{{ path("event_show", {id:event.id}) }}">
+                    <div class="event__card">
+                        <h5 class="event__title">{{ event.name }}</h5>
+                        <img class="event__image" src="{{ event.category.image }}" alt="">
+                        <div class="event__city">{{ event.city }}</div>
+                    </div>
+                </a>
             {% endfor %}
         </div>
         {% endif %}
