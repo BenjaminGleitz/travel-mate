@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -20,17 +21,20 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Merci de saisir un nom")
+     * @Assert\NotBlank(message="please give a name")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="please make a description")
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime_immutable")
+     * @Assert\NotBlank(message="please select a date")
+     * @Assert\GreaterThan("now", message="Please select a date in the future")
      */
     private $startAt;
 
@@ -47,14 +51,22 @@ class Event
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="please select a category")
      */
     private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity=City::class, inversedBy="events")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="please select a city")
      */
     private $city;
+
+    public function __construct()
+    {
+        $this->createdAt = new DateTimeImmutable();
+        $this->startAt = new DateTimeImmutable('today');
+    }
 
     public function getId(): ?int
     {

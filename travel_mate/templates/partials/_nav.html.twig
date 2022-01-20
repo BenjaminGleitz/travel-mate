@@ -6,18 +6,34 @@
             <a href="">destination</a>
             <a href="{{ path('category_index') }}">categories</a>
         </div>
-        <div class="nav__account">
-            <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle account-button" data-bs-toggle="dropdown" aria-expanded="false">
-                Account
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><button class="dropdown-item" type="button"><a href="{{ path('backoffice_home') }}">Backoffice</a></button></li>
-                <li><button class="dropdown-item" type="button">Another action</button></li>
-                <li><button class="dropdown-item" type="button">Something else here</button></li>
-            </ul>
+        {% if is_granted('ROLE_ADMIN') %}
+            admin - <a href="{{path('backoffice_home')}}">Backoffice</a>
+        {% elseif is_granted('ROLE_USER') %}
+            User
+        {% else %}
+            no connected
+        {% endif %}
+        {% if app.user %}
+          <div class="connected">
+            <p><strong><bold>{{ app.user.email }}</bold></strong></p>
+            <div class="nav__account">
+                <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle account-button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Account
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" type="button"><a href="{{ path('backoffice_home') }}">Backoffice</a></button></li>
+                    <li><button class="dropdown-item deconnexion-button" type="button"><a class="text-decoration-none" href="{{ path('app_logout') }}">se déconnecter</a></button></li>
+                </ul>
+                </div>
             </div>
-        </div>
+          </div>
+        {% else %}
+            <button type="button" class="btn btn-outline-success">
+              <a class="text-decoration-none" href="{{ path('app_login') }}">Se connecter</a>
+            </button>
+        {% endif %}
+        
     </nav>
 
     <script type="text/javascript">

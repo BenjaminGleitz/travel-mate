@@ -6,7 +6,7 @@
     <div class="table__container">
         <h1>Event</h1>
 
-        <table class="table table--show">
+        <table class="table">
             <tbody>
                 <tr>
                     <th>Id</th>
@@ -21,8 +21,12 @@
                     <td>{{ event.description }}</td>
                 </tr>
                 <tr>
+                    <th>Category</th>
+                    <td>{{ event.category }}</td>
+                </tr>
+                <tr>
                     <th>StartAt</th>
-                    <td>{{ event.startAt ? event.startAt|date('Y-m-d') : '' }}</td>
+                    <td>{{ event.startAt ? event.startAt|date('Y-m-d H:i:s') : '' }}</td>
                 </tr>
                 <tr>
                     <th>CreatedAt</th>
@@ -39,7 +43,7 @@
             <div class="table__edit-group">
                 <a class="table__button" href="{{ path('backoffice_event_index') }}">back to list</a>
 
-                <a class="table__button" href="{{ path('backoffice_event_edit', {'id': event.id}) }}">edit</a>
+                <a class="table__button edit-button" href="{{ path('backoffice_event_edit', {'id': event.id}) }}">edit</a>
             </div>
             {{ include('backoffice/event/_delete_form.html.twig') }}
         </div>

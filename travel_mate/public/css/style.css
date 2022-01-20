@@ -50,6 +50,24 @@ a:hover {
 .nav__items a {
     margin: 0 2em;
 }
+.connected {
+    display: flex;
+    justify-content: space-between;
+    width: 20%;
+}
+.connected p {
+    align-self: center;
+    margin: 0;
+}
+.nav__account a {
+    color: black;
+}
+.deconnexion-button {
+    transition: 0.3s;
+}
+.deconnexion-button:hover {
+    background-color: #FF5959;
+}
 
 /* NAV - CATEGORY NAV */
 .category-nav__items {
@@ -324,7 +342,6 @@ a.table__button{
     padding: 10px 30px;
     background-color: #227ab9;
     color: white;
-    margin-right: 20px;
     transition: 0.5s;
 }
 a.table__button:hover {
@@ -346,6 +363,7 @@ a.action-button {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 50px 0px;
 }
 .delete-button {
     text-align: center;
@@ -381,7 +399,82 @@ a.action-button {
     margin: 0 auto;
      width: 50%; 
 }
+.table__edit-group {
+    display: flex;
+    justify-content: space-between;
+}
+.edit-button {
+    margin-left: 20px;
+}
+.update-button {
+    margin-top: 20px;
+}
 
+/* BACKOFFICE HOME */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    margin-top: 50px;
+    width: 60%;
+}
+.home-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 100%;
+}
+.home-menu__card {
+    display: flex;
+    height: 25%;
+    width: 100%;
+}
+.card__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 70%;
+    border-radius: 30px 0 0 30px;
+}
+.card__info p, .card__info h4 {
+    margin: 0;
+}
+.card__info--event {
+    background: linear-gradient(to right, rgb(223, 86, 86), rgb(255, 155, 155));
+}
+.card__info--category {
+    background: linear-gradient(to right, rgb(49, 128, 192), rgb(163, 193, 240));
+}
+.card__info--user {
+    background: linear-gradient(to right, rgb(233, 167, 44), rgb(243, 219, 191));
+}
+.card__button {
+    background-color: white;
+    width: 30%;
+    height: 100%;
+    border-radius: 0 30px 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card__button a {
+    color: black;
+    padding: 35px 69px;
+}
+.card__button--event a:hover {
+    color:rgb(223, 86, 86);
+}
+.card__button--category a:hover {
+    color:rgb(49, 128, 192);
+}
+.card__button--user a:hover {
+    color:rgb(233, 167, 44);
+}
 
 
 

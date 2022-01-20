@@ -2,7 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
+use App\Entity\City;
 use App\Entity\Event;
+use DateTimeImmutable;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -22,8 +26,14 @@ class Event1Type extends AbstractType
                 'input' => 'datetime_immutable',
                 'empty_data' => '',
             ])
-            ->add('category')
-            ->add('city')
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'placeholder' => 'All categories'
+            ])
+            ->add('city', EntityType::class, [
+                'class' => City::class,
+                'placeholder' => 'All cities'
+            ])
         ;
     }
 
