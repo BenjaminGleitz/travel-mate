@@ -20,6 +20,9 @@ a:hover {
 #results {
     padding-top: 120px;
 }
+h1 {
+    font-family: 'nunito sans';
+}
 /* NAV */
 
 .nav {
@@ -191,7 +194,7 @@ hr {
 .background {
     width: 100%;
     height: 80%;
-    background: #1F3849;
+    background: #3f7ba3;
     border-radius: 0 0 30px 30px;
 }
 .event__background {
@@ -204,7 +207,7 @@ hr {
     background-image: url(../images/culture.jpeg);
 }
 .event__background--Restaurant {
-    background-image: url("../images/culture.jpeg");
+    background-image: url("../images/restaurant.jpeg");
 }
 .event__background--Sport {
     background-image: url("../images/sport.jpg");
@@ -212,14 +215,11 @@ hr {
 .event__background--Party {
     background-image: url("../images/party.jpeg");
 }
-.event__background--Date {
-    background-image: url("../images/party.jpeg");
-}
 .event__background--Mutual {
     background-image: url("../images/mutual-help.jpg");
 }
 .event__background--Nature {
-    background-image: url("../images/party.jpg");
+    background-image: url("../images/nature.jpeg");
 }
 .event-detail__container {
     display: flex;
@@ -233,13 +233,17 @@ hr {
     height: 20%;
 }
 .event-title h1 {
-    font-weight: bold;
+    font-weight: 900;
     color: #1F3849;
 }  
+.event__title--Restaurant h1, .event__title--Culture h1{
+    color: white;
+}
 .event-info__container {
     width: 100%;
     height: 80%;
     display: flex;
+    font-weight: bold;
 }
 .event-info__description {
     width: 60%;
@@ -276,6 +280,16 @@ li i {
     width: 50%;
     border-radius: 30px;
     background: #F67280;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.noconnected-message {
+    margin: 0 auto;
+     width: 50%; 
+     text-align: center;
+     color: #FF0000;
+     font-weight: bold;
 }
 
 /* SEARCH RESULT PAGE */
@@ -291,15 +305,50 @@ li i {
     margin: 20px;
 }
 
+/* LOGIN PAGE */
+
+.login-form__container {
+    display: flex;
+    margin: 100px 0;
+    justify-content: center;
+    height: 300px;
+}
+.login-form {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.log-create {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+.log-create button {
+    margin: 0;
+    width: 50%;
+}
+
 /*! BACKOFFICE */
 
 /* TABLE */
-
+.flash-group {
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+.flash {
+    height: 100%;
+    margin: 0;
+    padding: 12px;
+    text-align: center;
+}
 .table__container {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    margin: 20px;
+    margin: 20px;text-overflow: ellipsis;
     min-height: 80vh;
 }
 .table {
@@ -308,6 +357,8 @@ li i {
     min-width: 400px;
     background-color: #1868a1;
     color: #fff;
+    max-width: 100%;
+    overflow: hidden;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgb(255, 89, 89, 0.2);
@@ -315,6 +366,11 @@ li i {
 .table thead tr, th {
     background-color: rgb(255, 89, 89);
     font-weight: bold;
+}
+td {
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .table thead td {
     padding: 12px 15px;

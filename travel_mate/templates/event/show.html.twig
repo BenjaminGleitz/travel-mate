@@ -6,13 +6,13 @@
 
     <div class="event__position">
         <div class="event-detail__container event__background event__background--{{event.category.name}}">
-            <div class="event-title">
+            <div class="event-title event__title--{{event.category.name}}">
                 <h1>{{event.name}}</h1>
             </div>
             <div class="background">
                 <div class="event-info__container">
                     <div class="event-info__description">
-                        <p>{{event.description}}</p>
+                        <p>{{event.description}} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus, esse labore magnam expedita dolorum nihil voluptates inventore. Tenetur odio perferendis molestiae, voluptates ullam repudiandae officia fugit fuga culpa odit itaque!</p>
                     </div>
                     <div class="event-info__location">
                         <ul>
@@ -23,9 +23,13 @@
                         </ul>
                     </div>
                 </div>
-                <div class="particpate-button">
-                    <button> Participate !</button>
-                </div>
+                {% if app.user %}
+                    <div class="particpate-button">
+                        <button class="update-button"> Participate !</button>
+                    </div>
+                    {% else %}
+                        <p class="noconnected-message">You must be logged in to register for the event</p>
+                {% endif %}
             </div>
         </div>
     </div>
