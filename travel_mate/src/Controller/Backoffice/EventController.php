@@ -39,6 +39,8 @@ class EventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($event);
             $entityManager->flush();
+            // Displays a message in case we succeed deleting
+            $this->addFlash('success', 'Le nouvel évènement a bien été créé');
 
             return $this->redirectToRoute('backoffice_event_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -88,6 +90,8 @@ class EventController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$event->getId(), $request->request->get('_token'))) {
             $entityManager->remove($event);
             $entityManager->flush();
+            // Displays a message in case we succeed deleting
+            $this->addFlash('danger', 'L\'événement ' . $event->getId() . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backoffice_event_index', [], Response::HTTP_SEE_OTHER);

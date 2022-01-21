@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    <div class="table__container">
+        <div class="form__container">
+            <div class="table__edit-group">
+                <h1>Create new User</h1>
+                <a class="table__button" href="{{ path('backoffice_user_index') }}">back to list</a>
+            </div>
+
+            {{ include('backoffice/user/_form.html.twig') }}
+
+        </div>
+    </div>
+{% endblock %}
