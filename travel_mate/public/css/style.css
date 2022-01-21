@@ -20,6 +20,9 @@ a:hover {
 #results {
     padding-top: 120px;
 }
+h1 {
+    font-family: 'nunito sans';
+}
 /* NAV */
 
 .nav {
@@ -191,7 +194,7 @@ hr {
 .background {
     width: 100%;
     height: 80%;
-    background: #1F3849;
+    background: #3f7ba3;
     border-radius: 0 0 30px 30px;
 }
 .event__background {
@@ -204,7 +207,7 @@ hr {
     background-image: url(../images/culture.jpeg);
 }
 .event__background--Restaurant {
-    background-image: url("../images/culture.jpeg");
+    background-image: url("../images/restaurant.jpeg");
 }
 .event__background--Sport {
     background-image: url("../images/sport.jpg");
@@ -212,14 +215,11 @@ hr {
 .event__background--Party {
     background-image: url("../images/party.jpeg");
 }
-.event__background--Date {
-    background-image: url("../images/party.jpeg");
-}
 .event__background--Mutual {
     background-image: url("../images/mutual-help.jpg");
 }
 .event__background--Nature {
-    background-image: url("../images/party.jpg");
+    background-image: url("../images/nature.jpeg");
 }
 .event-detail__container {
     display: flex;
@@ -233,13 +233,17 @@ hr {
     height: 20%;
 }
 .event-title h1 {
-    font-weight: bold;
+    font-weight: 900;
     color: #1F3849;
 }  
+.event__title--Restaurant h1, .event__title--Culture h1{
+    color: white;
+}
 .event-info__container {
     width: 100%;
     height: 80%;
     display: flex;
+    font-weight: bold;
 }
 .event-info__description {
     width: 60%;
@@ -276,6 +280,16 @@ li i {
     width: 50%;
     border-radius: 30px;
     background: #F67280;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.noconnected-message {
+    margin: 0 auto;
+     width: 50%; 
+     text-align: center;
+     color: #FF0000;
+     font-weight: bold;
 }
 
 /* SEARCH RESULT PAGE */
@@ -328,7 +342,6 @@ li i {
     height: 100%;
     margin: 0;
     padding: 12px;
-    width: 50%;
     text-align: center;
 }
 .table__container {

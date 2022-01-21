@@ -71,14 +71,23 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="backoffice_user_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($form->has('password')) {
+                    $user->setPassword(
+                        $passwordHasher->hashPassword(
+                            $user,
+                            $form->get('password')->getData()
+                        )
+                    );
+                }
             $user->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
+            $this->addFlash('success', 'L\'utilisateur ' . $user->getFirstname() . $user->getLastname() . ' a bien été mis à jour');
 
             return $this->redirectToRoute('backoffice_user_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -97,6 +106,7 @@ class UserController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
+            $this->addFlash('danger', 'L\'utilisateur ' . $user->getFirstname() . $user->getLastname() . ' a bien été supprimé');
         }
 
         return $this->redirectToRoute('backoffice_user_index', [], Response::HTTP_SEE_OTHER);

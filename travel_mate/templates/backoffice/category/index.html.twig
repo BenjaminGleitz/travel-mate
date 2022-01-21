@@ -6,8 +6,10 @@
 
     <div class="table__container">
     <h1>Category index</h1>
-
+    <div class="flash-group">
         <a class="table__button" href="{{ path('backoffice_category_new') }}">Create new</a>
+        {% include "partials/_flash.html.twig" %}
+    </div>
     <table class="table">
         <thead>
             <tr>

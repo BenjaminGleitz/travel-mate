@@ -40,7 +40,7 @@ class EventController extends AbstractController
             $entityManager->persist($event);
             $entityManager->flush();
             // Displays a message in case we succeed deleting
-            $this->addFlash('success', 'Le nouvel évènement a bien été créé');
+            $this->addFlash('success', 'L\'événement "' . $event->getName() . '" a bien été créé');
 
             return $this->redirectToRoute('backoffice_event_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -73,6 +73,8 @@ class EventController extends AbstractController
             $event->setUpdatedAt(new DateTimeImmutable());
             $entityManager->flush();
 
+            $this->addFlash('success', 'L\'événement "' . $event->getName() . '" a bien été mis à jour');
+
             return $this->redirectToRoute('backoffice_event_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -91,7 +93,7 @@ class EventController extends AbstractController
             $entityManager->remove($event);
             $entityManager->flush();
             // Displays a message in case we succeed deleting
-            $this->addFlash('danger', 'L\'événement ' . $event->getId() . ' a bien été supprimé');
+            $this->addFlash('danger', 'L\'événement "' . $event->getName() . '" a bien été supprimé');
         }
 
         return $this->redirectToRoute('backoffice_event_index', [], Response::HTTP_SEE_OTHER);
